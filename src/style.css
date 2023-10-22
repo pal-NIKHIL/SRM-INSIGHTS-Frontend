@@ -1,0 +1,33 @@
+/* .slick-list {
+  height: 100px;
+  width: 90vw;
+} */
+.slick-slide {
+  margin-right: 10px; /* Adjust this value to set the desired margin between slides */
+}
+.dialog-container {
+  background: url('https://i.pinimg.com/originals/1c/a7/49/1ca74946ed770bb635e4de4711bd861f.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+::-webkit-scrollbar-track
+{
+	border: 10px solid white;
+	 border-color: "transparent";
+	background-color: "#b2bec3";
+}
+
+::-webkit-scrollbar
+{
+	width: 7px;
+  height: 7px;
+	background-color: #dfe6e9;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: lightskyblue;
+	border-radius: 10px;
+}
+
