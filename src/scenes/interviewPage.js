@@ -38,6 +38,8 @@ const Logoslider = lazy(() => import("../component/logoslider"));
 const InterviewPage = () => {
   const [loading, setLoading] = useState(true);
   const [allinterview, setinterview] = useState([]);
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     axios
@@ -113,15 +115,7 @@ const InterviewPage = () => {
   ];
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        bgcolor: "#FAF0E6",
-        bgcolor: "white",
-        // alignItems: "center",
-      }}
-    >
+    <Box>
       <Stack
         sx={{
           alignItems: "center",
@@ -136,13 +130,12 @@ const InterviewPage = () => {
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          height: "50vh",
+          height: isLargeScreen ? "50vh" : "30vh",
         }}
       >
         <Card
           sx={{
             marginBottom: "-70px",
-            width: "500px",
           }}
         >
           <Stack

@@ -28,7 +28,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../style.css";
 const LogoSlider = () => {
-  const isXsOrSm = useMediaQuery("(max-width:600px)");
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   const images = require.context("../assest/companylogos/", true);
   const imageList = images.keys().map((image) => images(image));
@@ -89,7 +90,7 @@ const LogoSlider = () => {
         {...settings}
         style={{
           height: "100px",
-          width: isXsOrSm ? "100vw" : "88vw",
+          width: isLargeScreen ? "90vw" : "80vw",
         }}
       >
         {imageList.map((image, index) => (
@@ -119,7 +120,7 @@ const LogoSlider = () => {
         rtl={true}
         style={{
           height: "100px",
-          width: isXsOrSm ? "100vw" : "88vw",
+          width: isLargeScreen ? "90vw" : "80vw",
         }}
       >
         {imageList.map((image, index) => (

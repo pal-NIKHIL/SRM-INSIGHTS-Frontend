@@ -31,6 +31,7 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  useMediaQuery,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { alpha } from "@mui/material";
@@ -90,6 +91,7 @@ function App() {
   };
 
   const [hoverdrawer, sethoverdrawer] = useState(false);
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const [openinterviewDialog, setopeninterviewDialog] = useState(false);
   const [openreviewDialog, setopenreviewDialog] = useState(false);
   const [openloginDialog, setopenloginDialog] = useState(false);
@@ -302,32 +304,51 @@ function App() {
           <Box sx={{ display: { xs: "none", md: "block" } }}></Box>
 
           <Box>
-            <Button
-              type="submit"
-              variant="outlined"
-              onClick={() => {
-                if (activepath === "/interview-experience") {
+            {activepath === "/interview-experience" && (
+              <Button
+                type="submit"
+                variant="outlined"
+                onClick={() => {
                   setopeninterviewDialog(!openinterviewDialog);
-                } else if (activepath === "/campus-experience") {
-                  setopenreviewDialog(!openreviewDialog);
-                }
-              }}
-              sx={{
-                backgroundColor: "#161313",
-                alignItems: "center",
-                borderRadius: "30px",
-                "&:hover": {
-                  boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)",
+                }}
+                sx={{
                   backgroundColor: "#161313",
-                },
-              }}
-            >
-              <Typography m={1} variant="subtitle2" color="white">
-                {activepath === "/interview-experience"
-                  ? "Share Experience"
-                  : "Create Review"}
-              </Typography>
-            </Button>
+                  alignItems: "center",
+                  borderRadius: "30px",
+                  "&:hover": {
+                    boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)",
+                    backgroundColor: "#161313",
+                  },
+                }}
+              >
+                <Typography m={1} variant="subtitle2" color="white">
+                  Share Experience
+                </Typography>
+              </Button>
+            )}
+            {activepath === "/campus-experience" && (
+              <Button
+                type="submit"
+                variant="outlined"
+                onClick={() => {
+                  setopenreviewDialog(!openreviewDialog);
+                }}
+                sx={{
+                  backgroundColor: "#161313",
+                  alignItems: "center",
+                  borderRadius: "30px",
+                  "&:hover": {
+                    boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)",
+                    backgroundColor: "#161313",
+                  },
+                }}
+              >
+                <Typography m={1} variant="subtitle2" color="white">
+                  Create Review
+                </Typography>
+              </Button>
+            )}
+
             {!isUserlogin ? (
               <Button
                 color="inherit"
@@ -347,9 +368,9 @@ function App() {
                   },
                 }}
                 startIcon={<img src={state.avatar} width={"40px"} />}
-                endIcon={<RiArrowDropDownFill />}
+                endIcon={isLargeScreen && <RiArrowDropDownFill />}
               >
-                {state.name}
+                {isLargeScreen && state.name}
               </Button>
             )}
           </Box>

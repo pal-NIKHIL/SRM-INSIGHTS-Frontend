@@ -45,9 +45,7 @@ const HomePage = () => {
       });
   }, []);
   return (
-    <Box
-    // marginTop={"80px"}
-    >
+    <Box>
       <Stack spacing={4}>
         <Stack
           sx={{
@@ -61,7 +59,7 @@ const HomePage = () => {
         >
           <img
             src={rv2}
-            width={"100%"}
+            // width={"100%"}
             height={"100%"}
             objectFit="contain"
             style={{
@@ -96,7 +94,7 @@ const HomePage = () => {
             Why Choose SRM Insights ?
           </Typography> */}
 
-          <Grid2 container spacing={2} py={5} px={{ xs: 2, md: 10 }}>
+          <Grid2 container spacing={2} py={5} px={{ xs: 1, md: 10 }}>
             <Grid2 xs={12} md={4}>
               <Card
                 sx={{
@@ -166,7 +164,7 @@ const HomePage = () => {
           </Grid2>
         </Stack>
         <Divider width="100%" height="10px" color="black" />
-        <Stack sx={{}} justifyContent={"center"}>
+        <Stack justifyContent={"center"}>
           <Typography variant="h2" textAlign={"center"}>
             Our features
           </Typography>
@@ -174,7 +172,7 @@ const HomePage = () => {
             Empowering Your Journey with SRM Insights – Where Every Insight Is a
             Stepping Stone to Your Success!
           </Typography>
-          <Grid2 container spacing={2} py={"5vh"} px={"8vw"}>
+          <Grid2 container spacing={2} py={5} px={{ xs: 1, md: 10 }}>
             <Grid2 xs={12}>
               <Card
                 sx={{
@@ -191,7 +189,7 @@ const HomePage = () => {
                       a firsthand look at the heart of SRM University.
                     </Typography>
                   </Stack>
-                  <img src={campus1} />
+                  <img src={campus1} width={"100%"} />
                 </Stack>
               </Card>
             </Grid2>
@@ -269,151 +267,8 @@ const HomePage = () => {
             </Typography>
           </Button>
         </Box>
-        {/* <Stack sx={{}} justifyContent={"center"} pt={5}>
-          <Typography variant="h3" textAlign={"center"}>
-            Why Choose SRM Insights ?
-          </Typography>
-
-          <Grid2 container spacing={2} py={5} px={10}>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img
-                    src={privacybg}
-                    height={"200px"}
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
-
-                  <Typography variant="h3" textAlign={"center"}>
-                    Privacy
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Your privacy is our priority. Feel comfortable sharing your
-                    thoughts and questions anonymously, creating a judgment-free
-                    zone for meaningful conversations
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img src={campus1} height={"200px"} />
-
-                  <Typography variant="h3" textAlign={"center"}>
-                    Community
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Join a community of like-minded students who are passionate
-                    about helping each other succeed. Connect, collaborate, and
-                    grow together.
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img src={rv1} height={"200px"} />
-
-                  <Typography variant="h3" textAlign={"center"}>
-                    Authenticity
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Feel comfortable sharing your thoughts and questions
-                    anonymously, creating a judgment-free zone for meaningful
-                    conversations.
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-          </Grid2>
-        </Stack> */}
       </Stack>
     </Box>
-
-    // <Box spacing={4} bgcolor={"#f7f7f7"}>
-    //   <Grid2
-    //     container
-    //     py={"16vh"}
-    //     px={"8vw"}
-    //     m={1}
-    //     sx={{
-    //       backgroundImage: `linear-gradient(rgb(185,160,254),rgb(221,180,255,0.7)), url(${bg8})`,
-    //       // backgroundImage: `url(${bg8})`,
-    //       borderRadius: "20px",
-    //       backgroundSize: "contain",
-    //       backgroundPosition: "right",
-    //     }}
-    //     spacing={2}
-    //   >
-    //     <Grid2 xs={12} spacing={2}>
-    //       <Box>
-    //         <Typography variant="h1" color="white" textAlign={"center"}>
-    //           Discover Stories
-    //         </Typography>
-    //         <Typography variant="h1" textAlign={"center"}>
-    //           and Perspectives
-    //         </Typography>
-    //       </Box>
-    //     </Grid2>
-
-    //     <Grid2 xs={12} md={4}>
-    //       <Card>
-    //         <Stack alignItems={"center"} p={2} spacing={2}>
-    //           <img src={img1} height={"200px"} />
-
-    //           <Typography variant="subtitle1">Campus Experiences</Typography>
-    //           <Typography variant="h3">{totalReview}+</Typography>
-    //         </Stack>
-    //       </Card>
-    //     </Grid2>
-    //     <Grid2 xs={12} md={4}>
-    //       <Card>
-    //         <Stack alignItems={"center"} p={2} spacing={2}>
-    //           <img src={img1} height={"200px"} />
-
-    //           <Typography variant="subtitle1">
-    //             Get Interview Insights
-    //           </Typography>
-    //           <Typography variant="h3">{totalInterview + "+"}</Typography>
-    //         </Stack>
-    //       </Card>
-    //     </Grid2>
-    //     <Grid2 xs={12} md={4}>
-    //       <Card>
-    //         <Stack alignItems={"center"} p={2} spacing={2}>
-    //           <img src={img1} height={"200px"} />
-
-    //           <Typography variant="subtitle1">Campus Experiences</Typography>
-    //           <Typography variant="h3">{totalReview}+</Typography>
-    //         </Stack>
-    //       </Card>
-    //     </Grid2>
-    //   </Grid2>
-    //   <Box>
-    //     <Typography variant="h2" textAlign={"center"}>
-    //       Contact our friendly Team
-    //     </Typography>
-    //     <Typography variant="body1" textAlign={"center"}>
-    //       Let us Know how we can help
-    //     </Typography>
-    //   </Box>
-    // </Box>
   );
 };
 export default HomePage;

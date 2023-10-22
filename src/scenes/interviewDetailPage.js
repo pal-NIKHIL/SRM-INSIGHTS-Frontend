@@ -16,6 +16,7 @@ import {
   Card,
   SvgIcon,
   OutlinedInput,
+  useMediaQuery,
 } from "@mui/material";
 import bg5 from "../assest/bg5.jpg";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
@@ -42,6 +43,7 @@ const InterviewDetail = () => {
   const [jobDetail, setjobDetail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [companylogo, setcompanylogo] = useState(defaultlogo);
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   useEffect(() => {
     if (_id) {
       axios
@@ -92,12 +94,14 @@ const InterviewDetail = () => {
         <Stack
           py={"8vh"}
           px={"8vw"}
-          direction={"row"}
+          direction={isLargeScreen ? "row" : "column"}
           spacing={2}
           justifyContent={"center"}
           alignItems={"center"}
           sx={{
-            backgroundImage: `linear-gradient(to left, white, rgb(185,160,254), rgb(221,180,255,0.3)), url(${bg8})`,
+            backgroundImage: `linear-gradient(${
+              isLargeScreen ? "to left" : "to bottom"
+            }, white, rgb(185,160,254), rgb(221,180,255,0.3)), url(${bg8})`,
 
             // backgroundImage: `url(${bg8})`,
             backgroundSize: "contain",
@@ -105,10 +109,13 @@ const InterviewDetail = () => {
             borderRadius: "10px",
           }}
         >
-          <Typography variant="h1" textAlign={"center"}>
+          <Typography
+            variant={isLargeScreen ? "h1" : "h2"}
+            textAlign={"center"}
+          >
             Interview Details
           </Typography>
-          <img src={sl1} height={"300px"} />
+          {isLargeScreen && <img src={sl1} height={"300px"} />}
         </Stack>
 
         <Grid2 container spacing={2} mt={2}>
@@ -121,14 +128,14 @@ const InterviewDetail = () => {
               }}
               spacing={2}
             >
-              <Stack direction={"row"} justifyContent={"space-between"}>
-                <Stack direction="row" alignItems={"center"} spacing={1}>
-                  {/* <img src={companylogo} height={"100px"} /> */}
-
-                  <Typography variant="h3">
-                    {jobDetail.company + " | " + jobDetail.role}
-                  </Typography>
-                </Stack>
+              <Stack
+                direction={isLargeScreen ? "row" : "column"}
+                justifyContent={"space-between"}
+                spacing={1}
+              >
+                <Typography variant="h3">
+                  {jobDetail.company + " | " + jobDetail.role}
+                </Typography>
                 <Stack
                   color={jobDetail.offerstatus ? "green" : "red"}
                   direction={"row"}
