@@ -14,6 +14,7 @@ import {
   Card,
   Divider,
   CircularProgress,
+  useMediaQuery,
 } from "@mui/material";
 import { Formik } from "formik";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
@@ -35,6 +36,8 @@ const ReviewInputDialog = ({ handleReviewDialog }) => {
   const [done, setdone] = useState(false);
   const [errorMesage, seterrorMessage] = useState("");
   const { state } = useContext(UserContext);
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
   const handlecreateReview = (data) => {
     setLoading(true);
     axios
@@ -72,8 +75,8 @@ const ReviewInputDialog = ({ handleReviewDialog }) => {
         sx={{
           background: `white`,
         }}
-        p={4}
-        height={"65vh"}
+        p={isLargeScreen ? 4 : 1}
+        // height={"65vh"}
       >
         {loading ? (
           <Box

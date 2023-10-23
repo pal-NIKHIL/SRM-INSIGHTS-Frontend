@@ -110,11 +110,13 @@ const CustomTheme = () => {
         styleOverrides: {
           root: {
             borderRadius: 10,
-            boxShadow: "0px 5px 5px rgba(0, 0, 0, 0.2)", // New card shadow
-            transition: "transform 0.2s ease",
+            boxShadow:
+              " 0 0 2px 0 rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12)",
+            transition: "box-shadow 800ms cubic-bezier(0.4, 0, 0.2, 1) 8ms",
             "&:hover": {
               transform: "translateY(-4px)",
-              boxShadow: "0px 5px 5px rgba(0, 0, 0, 0.3)", // New shadow on hover
+              boxShadow:
+                " 0 0 2px 0 rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12)",
             },
           },
         },

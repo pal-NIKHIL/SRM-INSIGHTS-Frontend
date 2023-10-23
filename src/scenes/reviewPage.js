@@ -53,7 +53,7 @@ const ReviewPage = () => {
     <Box>
       <Grid2 container>
         <Grid2 xs={12}>
-          <Stack
+          {/* <Stack
             m={1}
             sx={{
               backgroundImage: `url(${bg6})`,
@@ -77,18 +77,15 @@ const ReviewPage = () => {
                 Your Stories
               </Typography>
             </Box>
-          </Stack>
+          </Stack> */}
         </Grid2>
-        <Grid xs={12} mt={2}>
-          <Typography variant="h2" textAlign={"center"} fontWeight={"600"}>
-            The Campus Diaries
-          </Typography>
-        </Grid>
-        <Grid xs={12}>
-          <Typography variant="subtitle1" textAlign={"center"} mb={3}>
+        <Grid xs={12} py={5} px={2}>
+          <Typography variant="h2">The Campus Diaries</Typography>
+          <Typography variant="subtitle1">
             Get the inside scoop on college life from students who've been there
           </Typography>
         </Grid>
+
         <Grid xs={12}>
           {loading ? (
             <Grid container>

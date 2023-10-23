@@ -11,22 +11,25 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import CountUp from "react-countup";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import bg8 from "../assest/bg8.jpg";
+import bg10 from "../assest/bg11.jpg";
 import rv1 from "../assest/review1.svg";
 import rv2 from "../assest/review2.svg";
 import sl1 from "../assest/sl1.svg";
 import ie1 from "../assest/ie1.svg";
 import community from "../assest/community2.png";
 import ie2 from "../assest/ie2.png";
+
 import campus1 from "../assest/campus1.svg";
 import privacybg from "../assest/privacy.jpg";
 import an1 from "../assest/an1.svg";
 import img1 from "../assest/interview1.png";
-import bg5 from "../assest/bg5.jpg";
+import bg9 from "../assest/bg9.jpg";
 import { BiHome } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import github from "../assest/companylogos/github-logo.png";
 import axios from "axios";
 const HomePage = () => {
   const theme = useTheme();
@@ -47,194 +50,172 @@ const HomePage = () => {
   return (
     <Box>
       <Stack spacing={4}>
-        <Stack
-          sx={{
-            backgroundColor: "#ffb840",
-            borderRadius: "20px",
-            position: "relative",
-            height: "300px",
-          }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <img
-            src={rv2}
-            // width={"100%"}
-            height={"100%"}
-            objectFit="contain"
-            style={{
+        <Stack>
+          <Stack
+            sx={{
+              background: `linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),url(${bg10})`,
+              // backgroundImage: `url(${bg10})`,
+              backgroundSize: "cover",
               borderRadius: "20px",
             }}
-          />
-          <Stack
-            position="absolute"
-            bottom="0"
-            width="100%"
-            textAlign="center"
-            padding="20px"
-            marginBottom={"-90px"}
+            justifyContent="center"
+            alignItems="center"
+            spacing={4}
+            p={8}
           >
             <Typography
               variant={isLargeScreen ? "h1" : "h2"}
               textAlign={"center"}
-              color={"white"}
             >
-              Discover Stories
+              Discover Stories and Perspectives
             </Typography>
-            <Typography
-              variant={isLargeScreen ? "h1" : "h2"}
-              textAlign={"center"}
+            <Typography variant="subtitle1" textAlign={"center"}>
+              Navigating the complex world of education becomes easier when you
+              have the insights of those who have walked the same path
+            </Typography>
+            <ButtonBase
+              component={Link}
+              to={"/campus-experience"}
+              sx={{
+                backgroundColor: "#161313",
+                width: "fit-content",
+                borderRadius: "20px",
+                "&:hover": {
+                  boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)",
+                  backgroundColor: "#161313",
+                },
+              }}
             >
-              and Perspectives
-            </Typography>
+              <Typography m={1.5} variant="subtitle2" color="white">
+                Join the Community
+              </Typography>
+            </ButtonBase>
+            <Stack
+              direction={"row"}
+              sx={{
+                justifyContent: "center",
+              }}
+            >
+              <Stack p={2}>
+                <Typography textAlign={"center"} variant="body1">
+                  Total Review
+                </Typography>
+                <Typography textAlign={"center"} variant="h3">
+                  <CountUp end={totalReview} />+
+                </Typography>
+              </Stack>
+              <Stack p={2}>
+                <Typography textAlign={"center"} variant="body1">
+                  Total Interview
+                </Typography>
+                <Typography textAlign={"center"} variant="h3">
+                  <CountUp end={totalInterview} />+
+                </Typography>
+              </Stack>
+            </Stack>
           </Stack>
-        </Stack>
-        <Stack sx={{}} justifyContent={"center"} pt={5}>
-          {/* <Typography variant="h3" textAlign={"center"}>
-            Why Choose SRM Insights ?
-          </Typography> */}
 
-          <Grid2 container spacing={2} py={5} px={{ xs: 1, md: 10 }}>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img
-                    src={privacybg}
-                    height={"200px"}
-                    style={{
-                      objectFit: "contain",
-                    }}
-                  />
+          <Stack
+            sx={{}}
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            py={isLargeScreen ? 8 : 4}
+            px={isLargeScreen ? 4 : 1}
+          >
+            <Typography variant="subtitle1" textAlign={"center"}>
+              Why Choose SRM Insights?
+            </Typography>
+            <Typography variant="h2" textAlign={"center"}>
+              We Offer
+            </Typography>
+            <Grid2 container spacing={2}>
+              <Grid2 xs={12} sm={6} lg={3}>
+                <Card
+                  sx={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  <Stack justifyContent={"center"} spacing={3} p={5}>
+                    <img
+                      src={ie1}
+                      height={"200px"}
+                      style={{
+                        objectFit: "contain",
+                      }}
+                    />
 
-                  <Typography variant="h3" textAlign={"center"}>
-                    Privacy
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Your privacy is our priority. Feel comfortable sharing your
-                    thoughts and questions anonymously, creating a judgment-free
-                    zone for meaningful conversations
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img src={campus1} height={"200px"} />
-
-                  <Typography variant="h3" textAlign={"center"}>
-                    Community
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Join a community of like-minded students who are passionate
-                    about helping each other succeed. Connect, collaborate, and
-                    grow together.
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-            <Grid2 xs={12} md={4}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={5}>
-                  <img src={rv1} height={"200px"} />
-
-                  <Typography variant="h3" textAlign={"center"}>
-                    Authenticity
-                  </Typography>
-                  <Typography variant="subtitle2" textAlign={"center"}>
-                    Feel comfortable sharing your thoughts and questions
-                    anonymously, creating a judgment-free zone for meaningful
-                    conversations.
-                  </Typography>
-                </Stack>
-              </Card>
-            </Grid2>
-          </Grid2>
-        </Stack>
-        <Divider width="100%" height="10px" color="black" />
-        <Stack justifyContent={"center"}>
-          <Typography variant="h2" textAlign={"center"}>
-            Our features
-          </Typography>
-          <Typography variant="subtitle2" textAlign={"center"}>
-            Empowering Your Journey with SRM Insights – Where Every Insight Is a
-            Stepping Stone to Your Success!
-          </Typography>
-          <Grid2 container spacing={2} py={5} px={{ xs: 1, md: 10 }}>
-            <Grid2 xs={12}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#ddb4ff",
-                }}
-              >
-                <Stack direction={{ xs: "column", md: "row" }} p={4}>
-                  <Stack justifyContent={"center"} spacing={3}>
-                    <Typography variant="h2">Explore Campus Life</Typography>
-                    <Typography variant="body2">
-                      Dive into genuine reviews and advice about campus
-                      facilities, events, and the vibrant student community. Get
-                      a firsthand look at the heart of SRM University.
+                    <Typography variant="h3" textAlign={"center"}>
+                      Interview Experiences
+                    </Typography>
+                    <Typography variant="subtitle2" textAlign={"center"}>
+                      Authentic insights from successful alumni for confident
+                      interview preparations.
                     </Typography>
                   </Stack>
-                  <img src={campus1} width={"100%"} />
-                </Stack>
-              </Card>
+                </Card>
+              </Grid2>
+              <Grid2 xs={12} sm={6} lg={3}>
+                <Card
+                  sx={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  <Stack justifyContent={"center"} spacing={3} p={5}>
+                    <img src={ie2} height={"200px"} />
+
+                    <Typography variant="h3" textAlign={"center"}>
+                      Community Support
+                    </Typography>
+                    <Typography variant="subtitle2" textAlign={"center"}>
+                      Join a supportive community, collaborate, connect, and
+                      grow together.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid2>
+              <Grid2 xs={12} sm={6} lg={3}>
+                <Card
+                  sx={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  <Stack justifyContent={"center"} spacing={3} p={5}>
+                    <img src={an1} height={"200px"} />
+
+                    <Typography variant="h3" textAlign={"center"}>
+                      Anonymous Discussions
+                    </Typography>
+                    <Typography variant="subtitle2" textAlign={"center"}>
+                      Ask questions, share your experiences, and engage in
+                      candid discussions anonymously
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid2>
+              <Grid2 xs={12} sm={6} lg={3}>
+                <Card
+                  sx={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  <Stack justifyContent={"center"} spacing={3} p={5}>
+                    <img src={rv1} height={"200px"} />
+
+                    <Typography variant="h3" textAlign={"center"}>
+                      Explore Campus
+                    </Typography>
+                    <Typography variant="subtitle2" textAlign={"center"}>
+                      Dive into genuine reviews and advice about campus
+                      facilities, events, and the vibrant student community.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid2>
             </Grid2>
-            <Grid2 xs={12} md={6}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#fdb9f4",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={4}>
-                  <Typography variant="h2">Interview Experiences</Typography>
-                  <Typography variant="body2">
-                    Prepare for your future with real-time on-campus interview
-                    experiences. Learn from the successes and challenges faced
-                    by fellow students during placements !
-                  </Typography>
-                  <img
-                    src={ie2}
-                    height={"200px"}
-                    style={{ objectFit: "contain" }}
-                  />
-                </Stack>
-              </Card>
-            </Grid2>
-            <Grid2 xs={12} md={6}>
-              <Card
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#ffd262",
-                }}
-              >
-                <Stack justifyContent={"center"} spacing={3} p={4}>
-                  <Typography variant="h2">Anonymous Discussions</Typography>
-                  <Typography variant="body2">
-                    Ask questions, share your experiences, and engage in candid
-                    discussions anonymously. Create a safe space for open
-                    conversations and receive advice from your peers.
-                  </Typography>
-                  <img src={an1} height={"200px"} />
-                </Stack>
-              </Card>
-            </Grid2>
-          </Grid2>
+          </Stack>
         </Stack>
+
         <Box
           sx={{
             backgroundColor: "#f7f7f7",
@@ -242,7 +223,10 @@ const HomePage = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="h2">Contribute to Our Project</Typography>
+          <img src={github} />
+          <Typography variant={isLargeScreen ? "h2" : "h3"}>
+            Contribute to Our Project
+          </Typography>
           <Typography variant="body1">
             Help us improve! Contribute to our project on GitHub.
           </Typography>

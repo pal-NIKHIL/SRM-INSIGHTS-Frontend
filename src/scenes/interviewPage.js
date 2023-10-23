@@ -120,8 +120,6 @@ const InterviewPage = () => {
         sx={{
           alignItems: "center",
           justifyContent: "end",
-          my: 1,
-          mx: 1,
           backgroundColor: "rgb(248,64,64)",
           p: 5,
           position: "relative",
@@ -130,7 +128,7 @@ const InterviewPage = () => {
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          height: isLargeScreen ? "50vh" : "30vh",
+          height: isLargeScreen ? "50vh" : "40vh",
         }}
       >
         <Card
@@ -192,14 +190,7 @@ const InterviewPage = () => {
           </Stack>
         </Card>
       </Stack>
-      <Grid2
-        container
-        spacing={3}
-        mx={0.5}
-        mt={5}
-        mb={3}
-        justifyContent={"center"}
-      >
+      <Grid2 container spacing={3} mt={5} mb={3} justifyContent={"center"}>
         {!loading && currentCards.length === 0 && (
           <Stack spacing={1}>
             <img

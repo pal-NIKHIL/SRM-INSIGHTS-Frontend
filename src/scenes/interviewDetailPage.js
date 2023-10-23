@@ -18,7 +18,7 @@ import {
   OutlinedInput,
   useMediaQuery,
 } from "@mui/material";
-import bg5 from "../assest/bg5.jpg";
+import bg10 from "../assest/bg10.jpg";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { HiUserCircle, HiXCircle, HiMiniCheckCircle } from "react-icons/hi2";
 import { BiBarChart } from "react-icons/bi";
@@ -90,7 +90,7 @@ const InterviewDetail = () => {
   const formattedDate = formatDate(jobDetail.date);
   return (
     <Box>
-      <Stack>
+      <Stack my={1}>
         <Stack
           py={"8vh"}
           px={"8vw"}
@@ -99,13 +99,11 @@ const InterviewDetail = () => {
           justifyContent={"center"}
           alignItems={"center"}
           sx={{
-            backgroundImage: `linear-gradient(${
-              isLargeScreen ? "to left" : "to bottom"
-            }, white, rgb(185,160,254), rgb(221,180,255,0.3)), url(${bg8})`,
+            // backgroundImage: `linear-gradient(${
+            //   isLargeScreen ? "to left" : "to bottom"
+            // }, white, rgb(185,160,254), rgb(221,180,255,0.3)), url(${bg10})`,
 
-            // backgroundImage: `url(${bg8})`,
-            backgroundSize: "contain",
-            backgroundPosition: "right",
+            background: `linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)),url(${bg10})`,
             borderRadius: "10px",
           }}
         >
@@ -115,7 +113,7 @@ const InterviewDetail = () => {
           >
             Interview Details
           </Typography>
-          {isLargeScreen && <img src={sl1} height={"300px"} />}
+          {/* {isLargeScreen && <img src={sl1} height={"300px"} />} */}
         </Stack>
 
         <Grid2 container spacing={2} mt={2}>

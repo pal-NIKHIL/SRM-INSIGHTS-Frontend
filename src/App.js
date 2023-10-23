@@ -445,7 +445,8 @@ function App() {
         sx={{
           flexGrow: 1,
           p: 1,
-          mt: 8,
+          mt: 10,
+          mx: 1,
           width: {
             md: `calc(100% - ${hoverdrawer ? drawerWidth : minidrawerWidth}px)`,
           },
