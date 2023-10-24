@@ -84,7 +84,6 @@ function App() {
   const minidrawerWidth = 80;
 
   const { handlelogin, state, handlelogout } = useContext(UserContext);
-
   const handleDrawerToggle = () => {
     sethoverdrawer(true);
     setmobilescreen(!ismobilescreen);
@@ -96,23 +95,25 @@ function App() {
   const [openreviewDialog, setopenreviewDialog] = useState(false);
   const [openloginDialog, setopenloginDialog] = useState(false);
   const [avatarpicker, setavatarpicker] = useState(false);
-  const [avatarImage, setavatarImage] = useState("");
-
+  const [avatarImage, setavatarImage] = useState(null);
   const handleReviewDialog = () => setopenreviewDialog(!openreviewDialog);
   const handleInterviewDialog = () =>
     setopeninterviewDialog(!openinterviewDialog);
   useEffect(() => {
-    state.avatar = avatarImage;
-    axios.post(
-      "https://srm-insights-backend.vercel.app/profileUpdate",
-      { data: avatarImage },
-      {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      }
-    );
-  }, [avatarImage]);
+    if (avatarImage != null) {
+      state.avatar = avatarImage;
+      axios.post(
+        "https://srm-insights-backend.vercel.app/profileUpdate",
+        { data: avatarImage },
+        {
+          headers: {
+            "x-access-token": localStorage.getItem("token"),
+          },
+        }
+      );
+    }
+  }, [avatarImage, setavatarImage]);
+
   useEffect(() => {
     if (isUserlogin) {
       axios
@@ -121,7 +122,9 @@ function App() {
             "x-access-token": isUserlogin,
           },
         })
-        .then((response) => handlelogin(response.data))
+        .then((response) => {
+          handlelogin(response.data);
+        })
         .catch((e) => {
           console.log("error while fetching userData");
         });
@@ -394,7 +397,7 @@ function App() {
                   }}
                   startIcon={
                     <img
-                      src={state.avatar || userIcon}
+                      src={state.avatar === "" ? userIcon : state.avatar}
                       style={{
                         objectFit: "contain",
                         height: "30px",

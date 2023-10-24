@@ -144,7 +144,10 @@ const ReviewInputDialog = ({ handleReviewDialog }) => {
                     </Stack>
                     <Divider />
                     <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                      <img src={state.avatar || userIcon} width={"40px"} />
+                      <img
+                        src={state.avatar === "" ? userIcon : state.avatar}
+                        width={"40px"}
+                      />
                       <Typography>{state.name}</Typography>
                     </Stack>
 

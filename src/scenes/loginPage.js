@@ -123,6 +123,7 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
       }, 3000);
     },
   });
+
   const handlelogin = async (data, event) => {
     setloginverification(true);
     setLoading(true);

@@ -66,9 +66,11 @@ const AvatarPicker = ({
   };
   const handleFileUpload = async (avatar) => {
     try {
+      console.log("step3", avatar);
       const response = await fetch(avatar);
       const blob = await response.blob();
       const base64 = await convertToBase64(blob);
+      console.log("step4", base64);
       setavatarImage(base64);
     } catch (error) {
       console.error(error);
@@ -100,8 +102,8 @@ const AvatarPicker = ({
                 addAvatar === avatar ? theme.background.lightpink : "none",
             }}
             onClick={() => {
+              console.log("step1", avatar);
               setaddAvatar(avatar);
-              handleFileUpload(avatar);
             }}
           >
             <img
@@ -124,6 +126,8 @@ const AvatarPicker = ({
           },
         }}
         onClick={() => {
+          console.log("step2", addAvatar);
+          handleFileUpload(addAvatar);
           setavatarpicker(!avatarpicker);
         }}
       >
