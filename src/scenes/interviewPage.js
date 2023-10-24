@@ -131,65 +131,134 @@ const InterviewPage = () => {
           height: isLargeScreen ? "50vh" : "40vh",
         }}
       >
-        <Card
-          sx={{
-            marginBottom: "-70px",
-          }}
-        >
-          <Stack
-            direction={"row"}
-            bgcolor={"#FAF0E6"}
-            spacing={1}
-            px={1}
-            alignItems={"center"}
+        {isLargeScreen && (
+          <Card
+            sx={{
+              marginBottom: "-70px",
+            }}
           >
-            <div style={{ marginLeft: "8px", marginTop: "6px" }}>
-              <HiOutlineSearch />
-            </div>
-            <TextField
-              value={searchcompany}
-              onChange={(event) => setsearchcompany(event.target.value)}
-              fullWidth
-              placeholder="Company Name"
-              sx={{
-                "& fieldset": { border: "none" },
-              }}
-            />
+            <Stack
+              direction={isLargeScreen ? "row" : "row"}
+              bgcolor={"#FAF0E6"}
+              spacing={1}
+              px={1}
+              alignItems={"center"}
+            >
+              <div style={{ marginLeft: "8px", marginTop: "6px" }}>
+                <HiOutlineSearch />
+              </div>
+              <TextField
+                value={searchcompany}
+                onChange={(event) => setsearchcompany(event.target.value)}
+                fullWidth
+                placeholder="Company Name"
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              />
 
-            <IconButton
-              onClick={() => {
-                setsearchcompany("");
-                setsearchRole("");
-              }}
-            >
-              <BiSolidXCircle />
-            </IconButton>
-            <Divider orientation="vertical" flexItem />
-            <FormControl
-              fullWidth
-              sx={{
-                "& fieldset": { border: "none" },
-              }}
-            >
-              <Select
-                value={searchRole}
-                displayEmpty
-                onChange={handleRoleChange}
-                style={{
-                  fontSize: "16px",
+              <IconButton
+                onClick={() => {
+                  setsearchcompany("");
+                  setsearchRole("");
                 }}
               >
-                <MenuItem value="">Job Role</MenuItem>
-                {roles.map((role) => (
-                  <MenuItem key={role} value={role}>
-                    {role}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Stack>
-        </Card>
+                <BiSolidXCircle />
+              </IconButton>
+              <Divider orientation="vertical" flexItem />
+              <FormControl
+                fullWidth
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              >
+                <Select
+                  value={searchRole}
+                  displayEmpty
+                  onChange={handleRoleChange}
+                  style={{
+                    fontSize: "16px",
+                  }}
+                >
+                  <MenuItem value="">Job Role</MenuItem>
+                  {roles.map((role) => (
+                    <MenuItem key={role} value={role}>
+                      {role}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+          </Card>
+        )}
       </Stack>
+      {!isLargeScreen && (
+        <Stack spacing={2} mt={2}>
+          <Card>
+            <Stack
+              direction="row"
+              bgcolor={"#FAF0E6"}
+              spacing={1}
+              px={1}
+              alignItems={"center"}
+            >
+              <div style={{ marginLeft: "8px", marginTop: "6px" }}>
+                <HiOutlineSearch />
+              </div>
+              <TextField
+                value={searchcompany}
+                onChange={(event) => setsearchcompany(event.target.value)}
+                fullWidth
+                placeholder="Company Name"
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              />
+
+              <IconButton
+                onClick={() => {
+                  setsearchcompany("");
+                  setsearchRole("");
+                }}
+              >
+                <BiSolidXCircle />
+              </IconButton>
+            </Stack>
+          </Card>
+          <Card>
+            <Stack
+              direction="row"
+              bgcolor={"#FAF0E6"}
+              spacing={1}
+              px={1}
+              alignItems={"center"}
+            >
+              <FormControl
+                fullWidth
+                sx={{
+                  "& fieldset": { border: "none" },
+                }}
+              >
+                <Select
+                  value={searchRole}
+                  displayEmpty
+                  onChange={handleRoleChange}
+                  style={{
+                    fontSize: "16px",
+                  }}
+                >
+                  <MenuItem value="">Job Role</MenuItem>
+                  {roles.map((role) => (
+                    <MenuItem key={role} value={role}>
+                      {role}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+          </Card>
+        </Stack>
+      )}
       <Grid2 container spacing={3} mt={5} mb={3} justifyContent={"center"}>
         {!loading && currentCards.length === 0 && (
           <Stack spacing={1}>

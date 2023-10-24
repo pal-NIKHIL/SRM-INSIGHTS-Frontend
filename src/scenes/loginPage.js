@@ -31,6 +31,8 @@ import AvatarPicker from "../component/avatarpicker";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import donegif from "../assest/done.gif";
 import loadinggif from "../assest/loading.gif";
+import successImage from "../assest/success.gif";
+import errorImage from "../assest/error.gif";
 const initialloginValues = {
   email: "",
   password: "",
@@ -77,8 +79,9 @@ const RegisterSchema = yup.object({
 
 const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
   const [loading, setLoading] = useState(false);
-  const [done, setdone] = useState(false);
-
+  const [logindone, setlogindone] = useState(false);
+  const [loginerror, setloginerror] = useState(false);
+  const [loginverification, setloginverification] = useState(false);
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
@@ -87,9 +90,9 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
   const [errorMesage, seterrorMessage] = useState("");
   const [avatarpicker, setavatarpicker] = useState(false);
   const [avatarImage, setavatarImage] = useState("");
-
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (response) => {
+      setloginverification(true);
       setLoading(true);
       axios
         .post(
@@ -97,41 +100,46 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
           response
         )
         .then((response) => {
-          setdone(true);
+          setLoading(false);
+          setlogindone(true);
           setTimeout(() => {
-            setLoading(false);
             localStorage.setItem("token", response.data.token);
             setopenloginDialog(!openloginDialog);
           }, 2000);
         })
         .catch((error) => {
-          seterror(!iserror);
-          seterrorMessage(error.response.data.message);
+          setLoading(false);
+          setloginerror(true);
+          setTimeout(() => {
+            console.log(error);
+          }, 3000);
         });
     },
     onError: (error) => {
-      console.log(error.response.data.message);
-      seterror(!iserror);
-      seterrorMessage(error.response.data.message);
+      setLoading(false);
+      setloginerror(true);
+      setTimeout(() => {
+        console.log(error);
+      }, 3000);
     },
   });
-
   const handlelogin = async (data, event) => {
+    setloginverification(true);
     setLoading(true);
     axios
       .post("https://srm-insights-backend.vercel.app/auth/login", data)
       .then((response) => {
-        setdone(true);
+        console.log("success");
+        setLoading(false);
+        setlogindone(true);
         setTimeout(() => {
-          setLoading(false);
           localStorage.setItem("token", response.data.token);
           setopenloginDialog(!openloginDialog);
         }, 2000);
       })
       .catch((error) => {
-        console.log(error.response.data.message);
-        seterror(!iserror);
-        seterrorMessage(error.response.data.message);
+        setLoading(false);
+        setloginerror(true);
         event.resetForm();
       });
   };
@@ -186,19 +194,45 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
         }}
         // p={4}
       >
-        {loading ? (
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            height="100vh"
-          >
-            {done ? (
-              <img src={donegif} width={"100px"} />
-            ) : (
-              <img src={loadinggif} width={"100px"} />
+        {loginverification ? (
+          <Stack alignItems="center" justifyContent="center" height="60vh">
+            {loading && <img src={loadinggif} width={"100px"} />}
+            {logindone && <img src={successImage} width={"200px"} />}
+            {loginerror && (
+              <Stack alignItems={"center"} spacing={1}>
+                <img src={errorImage} width={"200px"} />
+                <Typography variant="h4">
+                  Invalid username or password
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    setloginverification(false);
+                    setLoading(false);
+                    setlogindone(false);
+                    setloginerror(false);
+                  }}
+                  target="_blank"
+                  sx={{
+                    backgroundColor: "#161313",
+                    alignItems: "center",
+                    borderRadius: "30px",
+                    width: "fit-content",
+                    marginTop: "10px",
+                    "&:hover": {
+                      boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)",
+                      backgroundColor: "#161313",
+                    },
+                  }}
+                >
+                  <Typography m={1} variant="subtitle2" color="white">
+                    Try Again
+                  </Typography>
+                </Button>
+              </Stack>
             )}
-          </Box>
+          </Stack>
         ) : (
           <Formik
             initialValues={islogin ? initialloginValues : initialregisterValues}
@@ -347,7 +381,7 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
                         {avatarpicker ? (
                           <>
                             <Grid item xs={12}>
-                              <Typography variant="h2">
+                              <Typography variant={isLargeScreen ? "h2" : "h3"}>
                                 Create your account
                               </Typography>
                             </Grid>

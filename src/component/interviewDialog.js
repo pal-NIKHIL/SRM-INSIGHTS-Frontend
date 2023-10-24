@@ -146,7 +146,7 @@ function InterviewInputDialog({ handleInterviewDialog }) {
           color: "white",
         }}
         py={2}
-        px={4}
+        px={isLargeScreen ? 4 : 0}
         height={"100%"}
       >
         {loading ? (

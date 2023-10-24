@@ -78,10 +78,6 @@ const AvatarPicker = ({
   return (
     <Stack alignItems={"center"} spacing={3}>
       <Typography variant="h3">Pick an Avatar</Typography>
-      {/* <IconButton>
-        <img src={addavatar} alt={`Add user Avatar`} width={"50px"} />
-      </IconButton> */}
-
       <Box
         sx={{
           display: "flex",

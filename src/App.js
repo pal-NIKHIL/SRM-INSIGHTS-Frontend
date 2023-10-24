@@ -71,19 +71,17 @@ import { BiUpArrow } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
 import HomePage from "./scenes/homePage";
 import userIcon from "./assest/avataricon/user-avatar.png";
+import AvatarPicker from "./component/avatarpicker";
 const InterviewInputDialog = lazy(() => import("./component/interviewDialog"));
 const ReviewInputDialog = lazy(() => import("./component/reviewDialog"));
 const LoginPage = lazy(() => import("./scenes/loginPage"));
 function App() {
   const isUserlogin = localStorage.getItem("token");
   const activepath = useLocation().pathname;
-  const navigate = useNavigate();
   const theme = useTheme();
   const [ismobilescreen, setmobilescreen] = useState(false);
   const drawerWidth = 240;
   const minidrawerWidth = 80;
-  const [openprofile, setopenprofile] = useState(true);
-  const [anchorel, setanchorel] = useState(null);
 
   const { handlelogin, state, handlelogout } = useContext(UserContext);
 
@@ -97,9 +95,24 @@ function App() {
   const [openinterviewDialog, setopeninterviewDialog] = useState(false);
   const [openreviewDialog, setopenreviewDialog] = useState(false);
   const [openloginDialog, setopenloginDialog] = useState(false);
+  const [avatarpicker, setavatarpicker] = useState(false);
+  const [avatarImage, setavatarImage] = useState("");
+
   const handleReviewDialog = () => setopenreviewDialog(!openreviewDialog);
   const handleInterviewDialog = () =>
     setopeninterviewDialog(!openinterviewDialog);
+  useEffect(() => {
+    state.avatar = avatarImage;
+    axios.post(
+      "https://srm-insights-backend.vercel.app/profileUpdate",
+      { data: avatarImage },
+      {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }
+    );
+  }, [avatarImage]);
   useEffect(() => {
     if (isUserlogin) {
       axios
@@ -256,8 +269,13 @@ function App() {
       )}
     </Box>
   );
-
-  console.log(activepath);
+  const open = Boolean(avatarpicker);
+  const handleprofileclick = () => {
+    setavatarpicker(!avatarpicker);
+  };
+  const handleClose = () => {
+    setavatarpicker(null);
+  };
   return (
     <Box display={"flex"} bgcolor={"#fefefe"}>
       <Suspense>
@@ -364,28 +382,61 @@ function App() {
                 Login
               </Button>
             ) : (
-              <Button
-                color="inherit"
-                sx={{
-                  "&:hover": {
-                    transform: "none",
-                    boxShadow: "none",
-                    backgroundColor: "lightgrey",
-                  },
-                }}
-                startIcon={
-                  <img
-                    src={state.avatar || userIcon}
-                    style={{
-                      objectFit: "contain",
-                      height: "30px",
-                    }}
-                  />
-                }
-                endIcon={isLargeScreen && <RiArrowDropDownFill />}
-              >
-                {isLargeScreen && state.name}
-              </Button>
+              <>
+                <Button
+                  color="inherit"
+                  sx={{
+                    "&:hover": {
+                      transform: "none",
+                      boxShadow: "none",
+                      backgroundColor: "lightgrey",
+                    },
+                  }}
+                  startIcon={
+                    <img
+                      src={state.avatar || userIcon}
+                      style={{
+                        objectFit: "contain",
+                        height: "30px",
+                      }}
+                    />
+                  }
+                  endIcon={isLargeScreen && <RiArrowDropDownFill />}
+                  onClick={() => handleprofileclick()}
+                >
+                  {isLargeScreen && state.name}
+                </Button>
+                <Menu
+                  sx={{
+                    marginTop: "50px",
+                  }}
+                  id="basic-menu"
+                  avatarpicker={avatarpicker}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem>
+                    <AvatarPicker
+                      setavatarpicker={setavatarpicker}
+                      avatarpicker={avatarpicker}
+                      setavatarImage={setavatarImage}
+                      avatarImage={avatarImage}
+                    />
+                  </MenuItem>
+                </Menu>
+              </>
             )}
           </Box>
         </Box>

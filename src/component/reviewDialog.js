@@ -24,6 +24,7 @@ import { HiUserCircle } from "react-icons/hi2";
 import donegif from "../assest/done.gif";
 import loadinggif from "../assest/loading.gif";
 import { AiOutlineClose } from "react-icons/ai";
+import userIcon from "../assest/avataricon/user-avatar.png";
 import { UserContext } from "../store/usercontext";
 const ReviewInputDialog = ({ handleReviewDialog }) => {
   const theme = useTheme();
@@ -143,7 +144,7 @@ const ReviewInputDialog = ({ handleReviewDialog }) => {
                     </Stack>
                     <Divider />
                     <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                      <img src={state.avatar} width={"40px"} />
+                      <img src={state.avatar || userIcon} width={"40px"} />
                       <Typography>{state.name}</Typography>
                     </Stack>
 
