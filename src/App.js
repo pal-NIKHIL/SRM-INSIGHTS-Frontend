@@ -57,6 +57,7 @@ import { UserContext } from "./store/usercontext";
 import InterviewPage from "./scenes/interviewPage";
 import InterviewDetail from "./scenes/interviewDetailPage";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+
 import {
   FaBuilding,
   FaMapMarkerAlt,
@@ -67,8 +68,9 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { Field, Formik } from "formik";
 import { BiUpArrow } from "react-icons/bi";
-
+import { BiUser } from "react-icons/bi";
 import HomePage from "./scenes/homePage";
+import userIcon from "./assest/avataricon/user-avatar.png";
 const InterviewInputDialog = lazy(() => import("./component/interviewDialog"));
 const ReviewInputDialog = lazy(() => import("./component/reviewDialog"));
 const LoginPage = lazy(() => import("./scenes/loginPage"));
@@ -112,7 +114,6 @@ function App() {
         });
     }
   }, [isUserlogin]);
-  console.log(state.avatar);
   const drawerItem = [
     {
       title: "HomePage",
@@ -159,6 +160,11 @@ function App() {
                 width="100%"
                 component={Link}
                 to={item.path}
+                onClick={() => {
+                  if (ismobilescreen) {
+                    setmobilescreen(false);
+                  }
+                }}
                 sx={{
                   justifyContent: hoverdrawer ? "start" : "center",
                   borderRadius: "0px",
@@ -363,11 +369,19 @@ function App() {
                 sx={{
                   "&:hover": {
                     transform: "none",
-                    boxShadow: "none", // New shadow on hover
+                    boxShadow: "none",
                     backgroundColor: "lightgrey",
                   },
                 }}
-                startIcon={<img src={state.avatar} width={"40px"} />}
+                startIcon={
+                  <img
+                    src={state.avatar || userIcon}
+                    style={{
+                      objectFit: "contain",
+                      height: "30px",
+                    }}
+                  />
+                }
                 endIcon={isLargeScreen && <RiArrowDropDownFill />}
               >
                 {isLargeScreen && state.name}

@@ -13,6 +13,7 @@ import {
   Alert,
   Dialog,
   SvgIcon,
+  useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { Formik } from "formik";
@@ -77,7 +78,9 @@ const RegisterSchema = yup.object({
 const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
   const [loading, setLoading] = useState(false);
   const [done, setdone] = useState(false);
+
   const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
   const [islogin, setlogin] = useState(true);
   const [iserror, seterror] = useState(false);
@@ -89,7 +92,10 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
     onSuccess: (response) => {
       setLoading(true);
       axios
-        .post("https://srm-insights-backend.vercel.app/auth/googlelogin", response)
+        .post(
+          "https://srm-insights-backend.vercel.app/auth/googlelogin",
+          response
+        )
         .then((response) => {
           setdone(true);
           setTimeout(() => {
@@ -218,7 +224,9 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
                             direction={"row"}
                             justifyContent={"space-between"}
                           >
-                            <Typography variant="h2">Welcome Back</Typography>
+                            <Typography variant={isLargeScreen ? "h2" : "h3"}>
+                              Welcome Back
+                            </Typography>
                             <IconButton
                               onClick={() =>
                                 setopenloginDialog(!openloginDialog)

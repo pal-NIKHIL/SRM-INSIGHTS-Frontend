@@ -61,7 +61,8 @@ const HomePage = () => {
             justifyContent="center"
             alignItems="center"
             spacing={4}
-            p={8}
+            py={isLargeScreen ? 8 : 4}
+            px={isLargeScreen ? 4 : 1}
           >
             <Typography
               variant={isLargeScreen ? "h1" : "h2"}
@@ -139,9 +140,9 @@ const HomePage = () => {
                   <Stack justifyContent={"center"} spacing={3} p={5}>
                     <img
                       src={ie1}
-                      height={"200px"}
                       style={{
                         objectFit: "contain",
+                        height: "180px",
                       }}
                     />
 
@@ -162,7 +163,13 @@ const HomePage = () => {
                   }}
                 >
                   <Stack justifyContent={"center"} spacing={3} p={5}>
-                    <img src={ie2} height={"200px"} />
+                    <img
+                      src={ie2}
+                      style={{
+                        objectFit: "contain",
+                        height: "180px",
+                      }}
+                    />
 
                     <Typography variant="h3" textAlign={"center"}>
                       Community Support
@@ -181,7 +188,13 @@ const HomePage = () => {
                   }}
                 >
                   <Stack justifyContent={"center"} spacing={3} p={5}>
-                    <img src={an1} height={"200px"} />
+                    <img
+                      src={an1}
+                      style={{
+                        objectFit: "contain",
+                        height: "180px",
+                      }}
+                    />
 
                     <Typography variant="h3" textAlign={"center"}>
                       Anonymous Discussions
@@ -200,7 +213,13 @@ const HomePage = () => {
                   }}
                 >
                   <Stack justifyContent={"center"} spacing={3} p={5}>
-                    <img src={rv1} height={"200px"} />
+                    <img
+                      src={rv1}
+                      style={{
+                        objectFit: "contain",
+                        height: "180px",
+                      }}
+                    />
 
                     <Typography variant="h3" textAlign={"center"}>
                       Explore Campus

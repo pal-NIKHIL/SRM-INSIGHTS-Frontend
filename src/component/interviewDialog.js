@@ -32,6 +32,7 @@ import {
   InputLabel,
   FormControl,
   Select,
+  useMediaQuery,
 } from "@mui/material";
 import bg4 from "../assest/bg4.jpg";
 import { Field, Formik } from "formik";
@@ -54,6 +55,8 @@ function InterviewInputDialog({ handleInterviewDialog }) {
     content: [],
   });
   const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
   const [numSteps, setNumSteps] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState();
