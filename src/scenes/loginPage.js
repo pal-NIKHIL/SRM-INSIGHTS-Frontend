@@ -89,7 +89,7 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
   const [iserror, seterror] = useState(false);
   const [errorMesage, seterrorMessage] = useState("");
   const [avatarpicker, setavatarpicker] = useState(false);
-  const [avatarImage, setavatarImage] = useState("");
+  const [avatarImage, setavatarImage] = useState(null);
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (response) => {
       setloginverification(true);
@@ -589,7 +589,6 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
                               setavatarpicker={setavatarpicker}
                               avatarpicker={avatarpicker}
                               setavatarImage={setavatarImage}
-                              avatarImage={avatarImage}
                             />
                           </Grid>
                         )}

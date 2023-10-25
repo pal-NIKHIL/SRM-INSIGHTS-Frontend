@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import boyAvatar from "../assest/avataricon/boy.png";
 import dog1Avatar from "../assest/avataricon/dog (1).png";
 import dogAvatar from "../assest/avataricon/dog.png";
@@ -11,6 +11,7 @@ import woman2Avatar from "../assest/avataricon/woman (2).png";
 import womanAvatar from "../assest/avataricon/woman.png";
 import adduser from "../assest/avataricon/user-avatar.png";
 import women3Avatar from "../assest/avataricon/indian.png";
+import axios from "axios";
 import man3Avatar from "../assest/avataricon/man (3).png";
 import {
   Avatar,
@@ -30,55 +31,29 @@ import {
 import { FaCircleUser } from "react-icons/fa6";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { AiOutlinePlus } from "react-icons/ai";
-const AvatarPicker = ({
-  setavatarpicker,
-  avatarpicker,
-  setavatarImage,
-  avatarImage,
-  setavatarfileName,
-}) => {
-  const avatars = [
-    women3Avatar,
-    boyAvatar,
-    dog1Avatar,
-    dogAvatar,
-    man3Avatar,
-    man1Avatar,
-    man2Avatar,
-    manAvatar,
-    robotAvatar,
-    woman1Avatar,
-    woman2Avatar,
-    womanAvatar,
-  ];
+const AvatarPicker = ({ setavatarpicker, avatarpicker, setavatarImage }) => {
+  const [avatar, setavatar] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/profileAvatar")
+      .then((response) => setavatar(response.data));
+  }, []);
   const theme = useTheme();
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = (error) => {
-        reject(error);
-      };
-      const blob = new Blob([file], { type: file.type });
-      reader.readAsDataURL(blob);
-    });
-  };
-  const handleFileUpload = async (avatar) => {
-    try {
-      console.log("step3", avatar);
-      const response = await fetch(avatar);
-      const blob = await response.blob();
-      const base64 = await convertToBase64(blob);
-      const parts = avatar.split("/");
-      const filename = parts[parts.length - 1];
-      setavatarfileName(filename);
-      setavatarImage(base64);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+  // const handleFileUpload = async (avatar) => {
+  //   try {
+  //     console.log("step3", avatar);
+  //     const response = await fetch(avatar);
+  //     const blob = await response.blob();
+  //     const base64 = await convertToBase64(blob);
+  //     const parts = avatar.split("/");
+  //     const filename = parts[parts.length - 1];
+  //     setavatarfileName(filename);
+  //     setavatarImage(base64);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   const [addAvatar, setaddAvatar] = useState();
   return (
     <Stack alignItems={"center"} spacing={3}>
@@ -94,7 +69,7 @@ const AvatarPicker = ({
         }}
         p={1}
       >
-        {avatars.map((avatar, index) => (
+        {avatar.map((avatar, index) => (
           <IconButton
             sx={{
               flexBasis: "25%",
@@ -130,7 +105,7 @@ const AvatarPicker = ({
         }}
         onClick={() => {
           console.log("step2", addAvatar);
-          handleFileUpload(addAvatar);
+          setavatarImage(addAvatar);
           setavatarpicker(!avatarpicker);
         }}
       >
