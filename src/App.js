@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import ReviewPage from "./scenes/reviewPage";
 
 import {
-  Container,
   CssBaseline,
   Box,
   AppBar,
@@ -10,27 +9,12 @@ import {
   Typography,
   Drawer,
   IconButton,
-  Avatar,
   ButtonBase,
   Toolbar,
   Divider,
   Button,
   Menu,
   MenuItem,
-  Dialog,
-  TextField,
-  DialogContent,
-  DialogTitle,
-  Switch,
-  Card,
-  Grid,
-  Stepper,
-  StepLabel,
-  StepContent,
-  Step,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   useMediaQuery,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
@@ -40,15 +24,9 @@ import { HiUserCircle } from "react-icons/hi2";
 import { useTheme } from "@mui/material";
 import community1 from "./assest/community1.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
-import { VscFeedback } from "react-icons/vsc";
-import interviewIcon from "./assest/interview.png";
 import { Link } from "react-router-dom";
-import { PiSuitcaseSimpleBold } from "react-icons/pi";
-import { FaHome, FaUserAstronaut } from "react-icons/fa";
-import { IoNotifications } from "react-icons/io5";
-import { SlLogout } from "react-icons/sl";
+import { FaHome } from "react-icons/fa";
 import { RiArrowDropDownFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import logo from "./assest/logo1.png";
 import axios from "axios";
@@ -56,19 +34,7 @@ import { useContext } from "react";
 import { UserContext } from "./store/usercontext";
 import InterviewPage from "./scenes/interviewPage";
 import InterviewDetail from "./scenes/interviewDetailPage";
-import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-
-import {
-  FaBuilding,
-  FaMapMarkerAlt,
-  FaUserTie,
-  FaBriefcase,
-  FaCalendarAlt,
-} from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
-import { Field, Formik } from "formik";
-import { BiUpArrow } from "react-icons/bi";
-import { BiUser } from "react-icons/bi";
+import { FaBuilding, FaBriefcase } from "react-icons/fa";
 import HomePage from "./scenes/homePage";
 import userIcon from "./assest/avataricon/user-avatar.png";
 import AvatarPicker from "./component/avatarpicker";

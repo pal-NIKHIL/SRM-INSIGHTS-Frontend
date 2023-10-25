@@ -1,22 +1,5 @@
-import React, { useContext, useState } from "react";
-import { HiUserCircle } from "react-icons/hi2";
-import { BiUpvote, BiDownvote } from "react-icons/bi";
-import {
-  Card,
-  CardHeader,
-  Typography,
-  CardContent,
-  CardActions,
-  Avatar,
-  Box,
-  Slider,
-  useTheme,
-  Stack,
-  Button,
-  IconButton,
-  CardActionArea,
-  Skeleton,
-} from "@mui/material";
+import React from "react";
+import { Stack, Skeleton } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 const ReviewCardLoading = ({ data, backgroundColor }) => {

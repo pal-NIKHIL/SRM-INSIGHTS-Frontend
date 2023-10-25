@@ -10,7 +10,6 @@ import "./style.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 let theme = CustomTheme();
-// theme = responsiveFontSizes(theme);
 root.render(
   <GoogleOAuthProvider clientId="968630748351-0v3o0212qs9gpv459ris1hsossmti0ur.apps.googleusercontent.com">
     <ThemeProvider theme={theme}>

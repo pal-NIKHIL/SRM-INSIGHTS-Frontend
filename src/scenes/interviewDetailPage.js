@@ -1,39 +1,24 @@
 import {
   Box,
-  Button,
-  IconButton,
   Typography,
   Stack,
   useTheme,
-  ButtonBase,
-  Dialog,
-  TextField,
-  DialogContent,
-  DialogTitle,
-  Switch,
   Divider,
-  InputAdornment,
   Card,
-  SvgIcon,
-  OutlinedInput,
   useMediaQuery,
 } from "@mui/material";
 import bg10 from "../assest/bg10.jpg";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { HiUserCircle, HiXCircle, HiMiniCheckCircle } from "react-icons/hi2";
-import { BiBarChart } from "react-icons/bi";
+import { HiMiniCheckCircle } from "react-icons/hi2";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import sl1 from "../assest/sl1.svg";
 import {
-  FaBuilding,
   FaMapMarkerAlt,
   FaUserTie,
   FaBriefcase,
   FaCalendarAlt,
 } from "react-icons/fa";
-import bg8 from "../assest/bg8.jpg";
 import companyLogos from "../component/companylogo";
 import defaultlogo from "../assest/avataricon/robot.png";
 const InterviewDetail = () => {

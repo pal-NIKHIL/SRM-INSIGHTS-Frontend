@@ -5,14 +5,10 @@ import {
   Typography,
   Button,
   Divider,
-  Avatar,
   InputAdornment,
   Stack,
-  Card,
   Grid,
-  Alert,
   Dialog,
-  SvgIcon,
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material";
@@ -24,12 +20,8 @@ import * as yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import jwtdecode from "jwt-decode";
 import { AiOutlineClose } from "react-icons/ai";
-import iconsvg from "../assest/icons.svg";
 import AvatarPicker from "../component/avatarpicker";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import donegif from "../assest/done.gif";
 import loadinggif from "../assest/loading.gif";
 import successImage from "../assest/success.gif";
 import errorImage from "../assest/error.gif";

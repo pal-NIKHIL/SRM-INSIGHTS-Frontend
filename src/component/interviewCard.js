@@ -1,24 +1,8 @@
-import {
-  Card,
-  CardHeader,
-  Divider,
-  Stack,
-  Typography,
-  Button,
-  Box,
-  Avatar,
-  useTheme,
-  ButtonBase,
-  CardContent,
-} from "@mui/material";
-import { PiSuitcaseSimpleBold } from "react-icons/pi";
-import { HiUserCircle, HiXCircle, HiMiniCheckCircle } from "react-icons/hi2";
-import { BiMap } from "react-icons/bi";
-import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { Card, Divider, Stack, Typography } from "@mui/material";
+import { HiMiniCheckCircle } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
-  FaBuilding,
   FaMapMarkerAlt,
   FaUserTie,
   FaBriefcase,
@@ -27,7 +11,6 @@ import {
 import companyLogos from "./companylogo";
 const InterviewCard = (data) => {
   const navigate = useNavigate();
-  const theme = useTheme();
   const {
     _id,
     date,
@@ -36,8 +19,6 @@ const InterviewCard = (data) => {
     offerstatus,
     location,
     jobtype,
-    rounds,
-    content,
     yearsofexperience,
   } = data.data;
   const handlecard = () => {

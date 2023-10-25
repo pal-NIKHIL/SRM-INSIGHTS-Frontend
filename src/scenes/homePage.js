@@ -1,33 +1,21 @@
 import { useEffect, useState } from "react";
 import {
-  AppBar,
   Box,
   Button,
   ButtonBase,
   Card,
-  Divider,
   Stack,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import CountUp from "react-countup";
-import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import bg10 from "../assest/bg11.jpg";
 import rv1 from "../assest/review1.svg";
-import rv2 from "../assest/review2.svg";
-import sl1 from "../assest/sl1.svg";
 import ie1 from "../assest/ie1.svg";
-import community from "../assest/community2.png";
 import ie2 from "../assest/ie2.png";
-
-import campus1 from "../assest/campus1.svg";
-import privacybg from "../assest/privacy.jpg";
 import an1 from "../assest/an1.svg";
-import img1 from "../assest/interview1.png";
-import bg9 from "../assest/bg9.jpg";
-import { BiHome } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import github from "../assest/companylogos/github-logo.png";
 import axios from "axios";
@@ -54,7 +42,6 @@ const HomePage = () => {
           <Stack
             sx={{
               background: `linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),url(${bg10})`,
-              // backgroundImage: `url(${bg10})`,
               backgroundSize: "cover",
               borderRadius: "20px",
             }}

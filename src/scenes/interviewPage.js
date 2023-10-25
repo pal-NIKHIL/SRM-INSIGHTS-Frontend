@@ -1,35 +1,23 @@
 import {
   Box,
-  Button,
   IconButton,
   Typography,
   Stack,
   useTheme,
-  ButtonBase,
-  Dialog,
   TextField,
-  DialogContent,
-  DialogTitle,
-  Switch,
   Divider,
-  InputAdornment,
   Card,
-  SvgIcon,
-  OutlinedInput,
   useMediaQuery,
   MenuItem,
   Select,
   FormControl,
-  InputLabel,
-  Toolbar,
   Pagination,
 } from "@mui/material";
 import bg4 from "../assest/bg4.jpg";
-import { useState, useEffect, useContext, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import nofound from "../assest/nofoundbg.jpg";
 import axios from "axios";
-import { UserContext } from "../store/usercontext";
 import InterviewCard from "../component/interviewCard";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { BiSolidXCircle } from "react-icons/bi";

@@ -1,20 +1,9 @@
 import React, { useContext, useState } from "react";
-import { HiUserCircle } from "react-icons/hi2";
-import { BiUpvote, BiDownvote } from "react-icons/bi";
 import {
   Card,
-  CardHeader,
   Typography,
-  CardContent,
-  CardActions,
-  Avatar,
-  Box,
-  Slider,
   useTheme,
   Stack,
-  Button,
-  IconButton,
-  CardActionArea,
   useMediaQuery,
 } from "@mui/material";
 
