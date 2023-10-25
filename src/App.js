@@ -96,21 +96,25 @@ function App() {
   const [openloginDialog, setopenloginDialog] = useState(false);
   const [avatarpicker, setavatarpicker] = useState(false);
   const [avatarImage, setavatarImage] = useState(null);
+  const [avatarfileName, setavatarfileName] = useState("");
   const handleReviewDialog = () => setopenreviewDialog(!openreviewDialog);
   const handleInterviewDialog = () =>
     setopeninterviewDialog(!openinterviewDialog);
   useEffect(() => {
     if (avatarImage != null) {
       state.avatar = avatarImage;
-      axios.post(
-        "https://srm-insights-backend.vercel.app/profileUpdate",
-        { data: avatarImage },
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      axios
+        .post(
+          "https://srm-insights-backend.vercel.app/profileUpdate",
+          { data: avatarImage, filename: avatarfileName },
+          {
+            headers: {
+              "x-access-token": localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(() => console.log("succees"))
+        .catch((error) => console.log(error));
     }
   }, [avatarImage, setavatarImage]);
 
@@ -436,6 +440,7 @@ function App() {
                       avatarpicker={avatarpicker}
                       setavatarImage={setavatarImage}
                       avatarImage={avatarImage}
+                      setavatarfileName={setavatarfileName}
                     />
                   </MenuItem>
                 </Menu>

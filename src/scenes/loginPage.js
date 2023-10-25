@@ -150,7 +150,10 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
     requestData.avatar = avatarImage;
 
     axios
-      .post("http://localhost:3001/auth/register", requestData)
+      .post(
+        "https://srm-insights-backend.vercel.app/auth/register",
+        requestData
+      )
       .then((response) => {
         console.log(response);
       })

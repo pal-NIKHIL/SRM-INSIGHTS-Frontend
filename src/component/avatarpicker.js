@@ -35,6 +35,7 @@ const AvatarPicker = ({
   avatarpicker,
   setavatarImage,
   avatarImage,
+  setavatarfileName,
 }) => {
   const avatars = [
     women3Avatar,
@@ -70,7 +71,9 @@ const AvatarPicker = ({
       const response = await fetch(avatar);
       const blob = await response.blob();
       const base64 = await convertToBase64(blob);
-      console.log("step4", base64);
+      const parts = avatar.split("/");
+      const filename = parts[parts.length - 1];
+      setavatarfileName(filename);
       setavatarImage(base64);
     } catch (error) {
       console.error(error);
