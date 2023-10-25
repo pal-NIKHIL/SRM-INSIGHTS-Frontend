@@ -35,7 +35,7 @@ const AvatarPicker = ({ setavatarpicker, avatarpicker, setavatarImage }) => {
   const [avatar, setavatar] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/profileAvatar")
+      .get("https://srm-insights-backend.vercel.app/profileAvatar")
       .then((response) => setavatar(response.data));
   }, []);
   const theme = useTheme();
