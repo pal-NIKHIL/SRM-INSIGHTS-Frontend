@@ -1,28 +1,4 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Typography,
-  Stack,
-  useTheme,
-  ButtonBase,
-  Dialog,
-  TextField,
-  DialogContent,
-  DialogTitle,
-  Switch,
-  Divider,
-  InputAdornment,
-  Card,
-  SvgIcon,
-  OutlinedInput,
-  useMediaQuery,
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  Toolbar,
-} from "@mui/material";
+import { useTheme, Card, useMediaQuery } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

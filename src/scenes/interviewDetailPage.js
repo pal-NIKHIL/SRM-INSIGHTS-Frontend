@@ -84,10 +84,6 @@ const InterviewDetail = () => {
           justifyContent={"center"}
           alignItems={"center"}
           sx={{
-            // backgroundImage: `linear-gradient(${
-            //   isLargeScreen ? "to left" : "to bottom"
-            // }, white, rgb(185,160,254), rgb(221,180,255,0.3)), url(${bg10})`,
-
             background: `linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)),url(${bg10})`,
             borderRadius: "10px",
           }}
@@ -98,7 +94,6 @@ const InterviewDetail = () => {
           >
             Interview Details
           </Typography>
-          {/* {isLargeScreen && <img src={sl1} height={"300px"} />} */}
         </Stack>
 
         <Grid2 container spacing={2} mt={2}>
