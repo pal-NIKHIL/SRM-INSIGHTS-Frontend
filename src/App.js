@@ -22,13 +22,13 @@ import { alpha } from "@mui/material";
 import { useEffect, useState, lazy, Suspense } from "react";
 import { HiUserCircle } from "react-icons/hi2";
 import { useTheme } from "@mui/material";
-import community1 from "./assest/community1.png";
+import hand from "./assest/hand.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
-import logo from "./assest/logo1.png";
+import logo from "./assest/logo.svg";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "./store/usercontext";
@@ -135,8 +135,8 @@ function App() {
         alignItems="center"
         width={"100%"}
       >
-        <img src={logo} width={"50px"} justifyContent="center" />
-        <Toolbar />
+        <img src={logo} width={"90%"} justifyContent="center" />
+        {!hoverdrawer && <Toolbar />}
         <Divider color="white" mt={2} />
         <Stack spacing={4} mt={2} justifyContent={"center"} width={"100%"}>
           {drawerItem.map((item) => {
@@ -233,7 +233,6 @@ function App() {
       {hoverdrawer && (
         <Box>
           <Stack textAlign={"center"}>
-            <img src={community1} width={"100%"} />
             <Typography variant="subtitle2">Join the community</Typography>
             <Typography variant="subtitle2">and find out more</Typography>
           </Stack>

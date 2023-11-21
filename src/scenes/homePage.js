@@ -16,9 +16,11 @@ import rv1 from "../assest/review1.svg";
 import ie1 from "../assest/ie1.svg";
 import ie2 from "../assest/ie2.png";
 import an1 from "../assest/an1.svg";
+import hand from "../assest/hand.png";
 import { Link } from "react-router-dom";
 import github from "../assest/companylogos/github-logo.png";
 import axios from "axios";
+import { Typewriter } from "react-simple-typewriter";
 const HomePage = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
