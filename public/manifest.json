@@ -3,23 +3,23 @@
   "name": "SRM Insight",
   "icons": [
     {
-      "src": "/logo4.png",
+      "src": "/logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "/logo4.png",
+      "src": "/logo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/logo4.png",
+      "src": "/logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#161313",
+  "background_color": "#161313"
 }

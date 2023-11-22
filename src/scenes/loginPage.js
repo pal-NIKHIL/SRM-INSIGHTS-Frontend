@@ -103,7 +103,7 @@ const LoginPage = ({ setopenloginDialog, openloginDialog }) => {
           setLoading(false);
           setloginerror(true);
           setTimeout(() => {
-            console.log(error);
+            console.log(error.response.data.message);
           }, 3000);
         });
     },

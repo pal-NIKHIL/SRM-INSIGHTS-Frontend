@@ -304,7 +304,8 @@ function App() {
                 type="submit"
                 variant="outlined"
                 onClick={() => {
-                  setopeninterviewDialog(!openinterviewDialog);
+                  if (state.islogin === false) setopenloginDialog(true);
+                  else setopeninterviewDialog(!openinterviewDialog);
                 }}
                 sx={{
                   backgroundColor: "#161313",
@@ -326,7 +327,8 @@ function App() {
                 type="submit"
                 variant="outlined"
                 onClick={() => {
-                  setopenreviewDialog(!openreviewDialog);
+                  if (state.islogin === false) setopenloginDialog(true);
+                  else setopenreviewDialog(!openreviewDialog);
                 }}
                 sx={{
                   backgroundColor: "#161313",
